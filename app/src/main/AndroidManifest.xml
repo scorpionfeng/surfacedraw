@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".WaitActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_wait"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
             android:name=".XActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_x"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
 
         <receiver android:name=".Xview">
             <intent-filter>

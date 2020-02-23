@@ -10,6 +10,9 @@ import android.widget.Toast
 
 class Xsv constructor (context:Context) : SurfaceView(context), SurfaceHolder.Callback,Runnable,View.OnClickListener {
 
+    @Volatile
+    var display:Boolean=false
+
     init{
         Toast.makeText(context,"init",Toast.LENGTH_SHORT).show()
         holder.addCallback(this)
@@ -19,9 +22,11 @@ class Xsv constructor (context:Context) : SurfaceView(context), SurfaceHolder.Ca
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder?) {
+        display=false
     }
 
     override fun surfaceCreated(holder: SurfaceHolder?) {
+        display=true
         Thread(this).start()
     }
 
@@ -48,11 +53,10 @@ class Xsv constructor (context:Context) : SurfaceView(context), SurfaceHolder.Ca
     override fun run() {
         /** 圆弧 */
 
-        while (true){
+        while (display){
             drawing(holder.lockCanvas())
              Thread.sleep(100)
         }
-
 
     }
 
